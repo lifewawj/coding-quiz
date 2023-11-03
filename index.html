@@ -9,86 +9,106 @@
 </head>
 
 <body>
-<!-- START QUIZ SECTION -->
-    <section id="start_quiz_container" class="style_container">
+    <!-- START QUIZ SECTION -->
+    <section id="quiz_style_container">
         <div>
             <h1 class="title">Coding Quiz Challenge</h1>
         </div>
         <div class="description">
-            <p>This Coding Quiz Challenge contains simple questions about the main three coding languages, HTML, CSS and JavaScript. </p>
-            <p>You'll be timed on how fast you can answer the Five Questions. Do you think you're smart and fast enough?</p>
+            <p>This Coding Quiz Challenge contains simple questions about the main three coding languages, HTML, CSS and
+                JavaScript. </p>
+            <p>You'll be timed on how fast you can answer the Five Questions. Do you think you're smart and fast enough?
+            </p>
             <p>Test your knowledge by clicking on the button down below to get started!</p>
         </div>
         <div class="style_start_btn_container">
-            <button class="style_start_btn">Start Quiz</button>
+            <button id='start_btn' class="style_start_btn">Start Quiz</button>
         </div>
     </section>
 
-<!-- QUESTION NUMBER 1 -->
+    <!-- QUESTION NUMBER 1 -->
     <section id="question_1" class="style_container">
         <div class="style_question">
             <h2>Which of these are NOT a Coding languages</h2>
         </div>
         <div id="answer_btns_section" class="pos_answer_btns_section">
-            <button class="style_answer_btn">HTML</button>
-            <button class="style_answer_btn">Tagalog</button>
-            <button class="style_answer_btn">CSS</button>
-            <button class="style_answer_btn">JavaScript</button>
+            <button class="style_answer_btn answer_1">HTML</button>
+            <button class="style_answer_btn answer_1 right">Tagalog</button>
+            <button class="style_answer_btn answer_1">CSS</button>
+            <button class="style_answer_btn answer_1">JavaScript</button>
         </div>
     </section>
 
-<!-- QUESTION NUMBER 2 -->
+    <!-- QUESTION NUMBER 2 -->
     <section id="question_2" class="style_container">
         <div class="style_question">
             <h2>To give a variable a value we use a ___?</h2>
         </div>
         <div id="answer_btns_section" class="pos_answer_btns_section">
-            <button class="style_answer_btn">HTML</button>
-            <button class="style_answer_btn">Tagalog</button>
-            <button class="style_answer_btn">CSS</button>
-            <button class="style_answer_btn">JavaScript</button>
+            <button class="style_answer_btn answer_2">+</button>
+            <button class="style_answer_btn answer_2">[]</button>
+            <button class="style_answer_btn answer_2">-</button>
+            <button class="style_answer_btn answer_2">=</button>
         </div>
     </section>
 
-<!-- QUESTION NUMBER 3 -->
+    <!-- QUESTION NUMBER 3 -->
     <section id="question_3" class="style_container">
         <div class="style_question">
             <h2>The condition in an if/else statement is enclosed within ___?</h2>
         </div>
         <div id="answer_btns_section" class="pos_answer_btns_section">
-            <button class="style_answer_btn">HTML</button>
-            <button class="style_answer_btn">Tagalog</button>
-            <button class="style_answer_btn">CSS</button>
-            <button class="style_answer_btn">JavaScript</button>
+            <button class="style_answer_btn answer_3">quotes</button>
+            <button class="style_answer_btn answer_3">curly brackets</button>
+            <button class="style_answer_btn answer_3">parenthesis</button>
+            <button class="style_answer_btn answer_3">square brackets</button>
         </div>
     </section>
 
-<!-- QUESTION NUMBER 4 -->
+    <!-- QUESTION NUMBER 4 -->
     <section id="question_4" class="style_container">
         <div class="style_question">
             <h2>Arrays in JavaScript can be used to store ___?</h2>
         </div>
         <div id="answer_btns_section" class="pos_answer_btns_section">
-            <button class="style_answer_btn">HTML</button>
-            <button class="style_answer_btn">Tagalog</button>
-            <button class="style_answer_btn">CSS</button>
-            <button class="style_answer_btn">JavaScript</button>
+            <button class="style_answer_btn answer_4">number & strings</button>
+            <button class="style_answer_btn answer_4">other arrays</button>
+            <button class="style_answer_btn answer_4">booleans</button>
+            <button class="style_answer_btn answer_4">all of the above</button>
         </div>
     </section>
 
-<!-- QUESTION NUMBER 5 -->
+    <!-- QUESTION NUMBER 5 -->
     <section id="question_5" class="style_container">
         <div class="style_question">
             <h2>String Values must be enclosed within ___ when being assigned to variables.</h2>
         </div>
         <div id="answer_btns_section" class="pos_answer_btns_section">
-            <button class="style_answer_btn">HTML</button>
-            <button class="style_answer_btn">Tagalog</button>
-            <button class="style_answer_btn">CSS</button>
-            <button class="style_answer_btn">JavaScript</button>
+            <button class="style_answer_btn answer_5">commas</button>
+            <button class="style_answer_btn answer_5">curly brackets</button>
+            <button class="style_answer_btn answer_5">quotes</button>
+            <button class="style_answer_btn answer_5">parenthesis</button>
         </div>
     </section>
-    
-</body>
 
+    <!-- END SCREEN -->
+    <section id="end_screen" class="style_end_screen_container">
+        <div class="title_end_screen">
+            <h2>All done!</h2>
+        </div>
+        <div>
+            <h3>Your final score is: </h3>
+        </div>
+        <div>
+            <h3>Enter your intials: </h3>
+            <input class="style_input_bar" type="text" id="nameInput" placeholder="Enter your name">
+            <button class="addBtn" onclick="addName()">Add Name</button>
+        </div>
+        <div>
+            <h3 class="style_leaderboard_container">Leaderboard</h3>
+            <ul id="leaderboard" class="style_leaderboard_title"></ul>
+        </div>
+    </section>
+    <script src="./assets/script.js"></script>
+</body>
 </html>

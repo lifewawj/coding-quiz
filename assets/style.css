@@ -8,6 +8,21 @@
 }
 
 /* STARTING MAIN PAGE */
+#quiz_style_container {
+    margin-top: 5vh;
+    margin-right: 3vh;
+    margin-left: 3vh;
+
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .style_container {
     margin-top: 5vh;
     margin-right: 3vh;
@@ -74,6 +89,9 @@
 #question_5 {
     display: none;
 }
+#end_screen {
+    display: none;
+}
 
 .style_question {
     margin-top: 3vh;
@@ -100,4 +118,71 @@
     color: white;
     cursor: pointer;
     background: #1e1e1e;
+}
+
+
+
+/* END SCREEN RESULTS & USER INPUT */
+.style_end_screen_container {
+    margin-top: 5vh;
+    margin-right: 3vh;
+    margin-left: 3vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.title_end_screen {
+    margin-top: 3vh;
+    font-size: 1.5rem;
+}
+
+.addBtn {
+    padding: 8px 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.addBtn:hover {
+    background-color: #1e1e1e;
+    color: white;
+    border-color: white;
+}
+
+.style_input_bar {
+    background-color: white;
+    color: darkslategrey;
+    padding: 10px 75px;
+    border-radius: 5px;
+}
+
+
+/* END SCREEN LEADERBOARD */
+.style_leaderboard_container {
+
+}
+
+.style_leaderboard_title {
+    
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black;
 }
