@@ -8,22 +8,32 @@ function startQuiz() {
     startBtn.addEventListener('click', function () {
         startQuizContainer.style.display = "none";
         questionOne.style.display = "flex";
+        startCountdown();
     });
 }
 
-// ADDING TO SCORE
-function addToScore(value) {
-    score += value;
-    updateScoreDisplay();
-}
+
+
+
+
 
 // Displays Score on the screen
-score = 0
+score = 0;
 
 function updateScoreDisplay() {
-    var scoreEl = document.querySelector('#score');
+    var scoreEl = document.querySelector('.score');
     scoreEl.innerHTML = 'Score: ' + score;
 }
+
+
+
+
+
+
+
+
+
+
 
 // Displays whether User's Answer was RIGHT or WRONG when they click on an ANSWER
 //The result of their answer showing and hiding for a certain amount of time
@@ -37,7 +47,7 @@ function showResultRight() {
     resultEl.style.marginTop = '2vh'
     resultEl.style.fontSize = '3rem'
 
-    addToScore(10);
+    score++;
 
     updateScoreDisplay();
 
@@ -64,10 +74,6 @@ function showResultWrong() {
         document.body.removeChild(resultEl);
     }, 500);
 }
-
-
-
-
 
 
 
@@ -172,13 +178,11 @@ clickAnswer4Wrong.forEach(function (answer4) {
 var endScreen = document.querySelector('#end_screen')
 var clickAnswer5Right = document.querySelectorAll('.answer_5right')
 var clickAnswer5Wrong = document.querySelectorAll('.answer_5wrong')
+var finalScoreEl = document.querySelector('#final_score');
 
 function showEndScreen() {
     questionFive.style.display = "none"
     endScreen.style.display = "flex"
-
-    var finalScoreEl = document.querySelector('#final_score');
-    finalScoreEl.innerText = 'Your Final Score: ' + score;
 };
 
 // DISPLAYS WHETHER USER CHOICE OF ANSWER IS RIGHT OR WRONG
@@ -193,13 +197,19 @@ clickAnswer5Wrong.forEach(function (answer5) {
 });
 
 
+
+
+
+
+
+
+
 // USER INPUTS NAME OR INTIALS
 function addName() {
     var leaderboardContainer = document.getElementById('style_leaderboard_container')
     var endScreen = document.getElementById('end_screen');
     var nameInput = document.getElementById("nameInput");
     var leaderboard = document.getElementById("leaderboard");
-    var finalScoreEl = document.querySelector('#final_score');
 
     var playerName = nameInput.value;
 
@@ -208,6 +218,7 @@ function addName() {
         li.textContent = playerName + ' ' + 'Scored ' + score + ' ' + 'points!';
         leaderboard.appendChild(li);
         nameInput.value = "";
+        
 
         li.style.display = 'flex'
         leaderboardContainer.style.display = 'flex'
@@ -216,18 +227,6 @@ function addName() {
         endScreen.style.display = 'none'
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // CLEARS LEADERBOARD
 function clearBoard() {
@@ -250,7 +249,7 @@ function restartQuiz() {
         leaderboardContainer.style.display = 'none';
         startQuizContainer.style.display = 'flex';
 
-        score = 0;
+        
         updateScoreDisplay();
     })
 }

@@ -207,3 +207,12 @@ li {
     color: white;
     border-color: white;
 }
+
+.score_and_timer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#score {
+    
+}
