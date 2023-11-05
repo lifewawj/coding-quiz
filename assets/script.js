@@ -11,9 +11,19 @@ function startQuiz() {
     });
 }
 
+// ADDING TO SCORE
+function addToScore(value) {
+    score += value;
+    updateScoreDisplay();
+}
 
-//Target All Wrong Classes and making it showResult
+// Displays Score on the screen
+score = 0
 
+function updateScoreDisplay() {
+    var scoreEl = document.querySelector('#score');
+    scoreEl.innerHTML = 'Score: ' + score;
+}
 
 // Displays whether User's Answer was RIGHT or WRONG when they click on an ANSWER
 //The result of their answer showing and hiding for a certain amount of time
@@ -27,11 +37,14 @@ function showResultRight() {
     resultEl.style.marginTop = '2vh'
     resultEl.style.fontSize = '3rem'
 
-    setTimeout(function() {
+    addToScore(10);
+
+    updateScoreDisplay();
+
+    setTimeout(function () {
         document.body.removeChild(resultEl);
     }, 500);
 }
-
 
 function showResultWrong() {
     var resultEl = document.createElement('h4');
@@ -43,10 +56,24 @@ function showResultWrong() {
     resultEl.style.marginTop = '2vh'
     resultEl.style.fontSize = '3rem'
 
-    setTimeout(function() {
+    score--;
+
+    updateScoreDisplay();
+
+    setTimeout(function () {
         document.body.removeChild(resultEl);
     }, 500);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 //Question 1 to Question 2
@@ -72,14 +99,6 @@ clickAnswer1Wrong.forEach(function (answer1) {
 });
 
 
-
-
-
-
-
-
-
-
 //Question 2 to Question 3
 var questionThree = document.querySelector('#question_3')
 var clickAnswer2Right = document.querySelectorAll('.answer_2right')
@@ -101,14 +120,6 @@ clickAnswer2Wrong.forEach(function (answer2) {
     answer2.addEventListener('click', showQuestion3);
     answer2.addEventListener('click', showResultWrong);
 });
-
-
-
-
-
-
-
-
 
 
 //Question 3 to Question 4
@@ -134,14 +145,6 @@ clickAnswer3Wrong.forEach(function (answer3) {
 });
 
 
-
-
-
-
-
-
-
-
 //Question 4 to Question 5
 var questionFive = document.querySelector('#question_5')
 var clickAnswer4Right = document.querySelectorAll('.answer_4right')
@@ -165,12 +168,6 @@ clickAnswer4Wrong.forEach(function (answer4) {
 });
 
 
-
-
-
-
-
-
 //Question 5 to End Screen
 var endScreen = document.querySelector('#end_screen')
 var clickAnswer5Right = document.querySelectorAll('.answer_5right')
@@ -179,6 +176,9 @@ var clickAnswer5Wrong = document.querySelectorAll('.answer_5wrong')
 function showEndScreen() {
     questionFive.style.display = "none"
     endScreen.style.display = "flex"
+
+    var finalScoreEl = document.querySelector('#final_score');
+    finalScoreEl.innerText = 'Your Final Score: ' + score;
 };
 
 // DISPLAYS WHETHER USER CHOICE OF ANSWER IS RIGHT OR WRONG
@@ -193,28 +193,22 @@ clickAnswer5Wrong.forEach(function (answer5) {
 });
 
 
-
-
-
-
-
-
-
-
 // USER INPUTS NAME OR INTIALS
 function addName() {
     var leaderboardContainer = document.getElementById('style_leaderboard_container')
-    var endScreen = document.getElementById('end_screen')
+    var endScreen = document.getElementById('end_screen');
     var nameInput = document.getElementById("nameInput");
     var leaderboard = document.getElementById("leaderboard");
+    var finalScoreEl = document.querySelector('#final_score');
 
     var playerName = nameInput.value;
-    
+
     if (playerName) {
         var li = document.createElement("li");
-        li.textContent = playerName;
+        li.textContent = playerName + ' ' + 'Scored ' + score + ' ' + 'points!';
         leaderboard.appendChild(li);
         nameInput.value = "";
+
         li.style.display = 'flex'
         leaderboardContainer.style.display = 'flex'
         leaderboardContainer.style.alignContent = 'center'
@@ -222,6 +216,18 @@ function addName() {
         endScreen.style.display = 'none'
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CLEARS LEADERBOARD
 function clearBoard() {
@@ -235,19 +241,16 @@ function clearBoard() {
     });
 }
 
-
-
 // RESTARTS QUIZ
 function restartQuiz() {
-    var restartBtn = document.querySelector('#restart_btn')
-    var leaderboardContainer = document.getElementById('style_leaderboard_container')
+    var restartBtn = document.querySelector('#restart_btn');
+    var leaderboardContainer = document.getElementById('style_leaderboard_container');
     var startQuizContainer = document.querySelector('#quiz_style_container');
+    restartBtn.addEventListener('click', function () {
+        leaderboardContainer.style.display = 'none';
+        startQuizContainer.style.display = 'flex';
 
-    restartBtn.addEventListener('click', function() {
-        leaderboardContainer.style.display = 'none'
-        startQuizContainer.style.display = 'flex'
+        score = 0;
+        updateScoreDisplay();
     })
 }
-
-
-
