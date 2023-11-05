@@ -10,7 +10,7 @@ function startQuiz() {
         questionOne.style.display = "flex";
     });
 }
-startQuiz();
+
 
 //Target All Wrong Classes and making it showResult
 
@@ -203,6 +203,8 @@ clickAnswer5Wrong.forEach(function (answer5) {
 
 // USER INPUTS NAME OR INTIALS
 function addName() {
+    var leaderboardContainer = document.getElementById('style_leaderboard_container')
+    var endScreen = document.getElementById('end_screen')
     var nameInput = document.getElementById("nameInput");
     var leaderboard = document.getElementById("leaderboard");
 
@@ -213,5 +215,39 @@ function addName() {
         li.textContent = playerName;
         leaderboard.appendChild(li);
         nameInput.value = "";
+        li.style.display = 'flex'
+        leaderboardContainer.style.display = 'flex'
+        leaderboardContainer.style.alignContent = 'center'
+        leaderboardContainer.style.justifyContent = 'center'
+        endScreen.style.display = 'none'
     }
 }
+
+// CLEARS LEADERBOARD
+function clearBoard() {
+    var clearBtn = document.querySelector('#clear_btn');
+    var listedNames = document.querySelectorAll('li');
+
+    clearBtn.addEventListener('click', function () {
+        listedNames.forEach(function (nameItem) {
+            nameItem.remove();
+        });
+    });
+}
+
+
+
+// RESTARTS QUIZ
+function restartQuiz() {
+    var restartBtn = document.querySelector('#restart_btn')
+    var leaderboardContainer = document.getElementById('style_leaderboard_container')
+    var startQuizContainer = document.querySelector('#quiz_style_container');
+
+    restartBtn.addEventListener('click', function() {
+        leaderboardContainer.style.display = 'none'
+        startQuizContainer.style.display = 'flex'
+    })
+}
+
+
+

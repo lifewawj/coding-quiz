@@ -22,7 +22,7 @@
             <p>Test your knowledge by clicking on the button down below to get started!</p>
         </div>
         <div class="style_start_btn_container">
-            <button id='start_btn' class="style_start_btn">Start Quiz</button>
+            <button id='start_btn' class="style_start_btn" onclick="startQuiz()">Start Quiz</button>
         </div>
     </section>
 
@@ -104,9 +104,16 @@
             <input class="style_input_bar" type="text" id="nameInput" placeholder="Enter your name">
             <button class="addBtn" onclick="addName()">Add Name</button>
         </div>
+    </section>
+
+    <section id="style_leaderboard_container">
         <div>
-            <h3 class="style_leaderboard_container">Leaderboard</h3>
-            <ul id="leaderboard" class="style_leaderboard_title"></ul>
+            <h3 class="title">Leaderboard</h3>
+            <div class="leaderboard_btns">
+                <button id="restart_btn" onclick="restartQuiz()">Restart</button>
+                <button id="clear_btn" onclick="clearBoard()">Clear Leaderboard</button>
+            </div>
+            <ul id="leaderboard"></ul>
         </div>
     </section>
     <script src="./assets/script.js"></script>
