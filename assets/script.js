@@ -15,20 +15,13 @@ function startQuiz() {
 
 
 
-
-
-// Displays Score on the screen
+// DISPLAYS SCORE
 score = 0;
 
 function updateScoreDisplay() {
     var scoreEl = document.querySelector('.score');
     scoreEl.innerHTML = 'Score: ' + score;
 }
-
-
-
-
-
 
 
 
@@ -81,7 +74,7 @@ function showResultWrong() {
 
 
 
-
+// QUESTIONS DISPLAYED FROM 1-5
 //Question 1 to Question 2
 var questionTwo = document.querySelector('#question_2');
 var clickAnswer1Right = document.querySelectorAll('.answer_1right');
@@ -203,7 +196,7 @@ clickAnswer5Wrong.forEach(function (answer5) {
 
 
 
-
+// END SCREEN FUNCTIONS
 // USER INPUTS NAME OR INTIALS
 function addName() {
     var leaderboardContainer = document.getElementById('style_leaderboard_container')
@@ -215,7 +208,7 @@ function addName() {
 
     if (playerName) {
         var li = document.createElement("li");
-        li.textContent = playerName + ' ' + 'Scored ' + score + ' ' + 'points!';
+        li.textContent = playerName + ' ' + 'scored ' + score + ' ' + 'points!';
         leaderboard.appendChild(li);
         nameInput.value = "";
         
@@ -227,6 +220,16 @@ function addName() {
         endScreen.style.display = 'none'
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 // CLEARS LEADERBOARD
 function clearBoard() {
@@ -249,7 +252,7 @@ function restartQuiz() {
         leaderboardContainer.style.display = 'none';
         startQuizContainer.style.display = 'flex';
 
-        
+        score = 0;
         updateScoreDisplay();
     })
 }
