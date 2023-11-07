@@ -2,15 +2,58 @@ var startBtn = document.querySelector('#start_btn');
 var startQuizContainer = document.querySelector('#quiz_style_container');
 var questionOne = document.querySelector('#question_1');
 
+// TIMER
+var timerEl = document.querySelector('#timer')
+
+var totalTime = 60;
+
+var countdown = totalTime;
+var countdownInterval;
+
+function updateCountdown() {
+    var minutes = Math.floor(countdown / 60);
+    var seconds = countdown % 60;
+    var formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    timerEl.textContent = formattedTime;
+}
+
+function startCountdown() {
+    countdownInterval = setInterval(function () {
+        if (countdown > 0) {
+            countdown--;
+            updateCountdown();
+        } else {
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
+}
+
+function stopCountdown() {
+    clearInterval(countdownInterval);
+}
+
+
+
+
+
+
+
 
 // USER CLICKS "START QUIZ" & IS PRESENTED BY THE FIRST QUESTION
 function startQuiz() {
     startBtn.addEventListener('click', function () {
         startQuizContainer.style.display = "none";
         questionOne.style.display = "flex";
+        timerEl.style.display = 'flex';
         startCountdown();
     });
 }
+
+
+
+
+
+
 
 
 
@@ -20,8 +63,11 @@ score = 0;
 
 function updateScoreDisplay() {
     var scoreEl = document.querySelector('.score');
-    scoreEl.innerHTML = 'Score: ' + score;
+    scoreEl.innerHTML = 'with a score of ' + score + ' ' + 'points!';
 }
+
+
+
 
 
 
@@ -67,6 +113,8 @@ function showResultWrong() {
         document.body.removeChild(resultEl);
     }, 500);
 }
+
+
 
 
 
@@ -174,9 +222,16 @@ var clickAnswer5Wrong = document.querySelectorAll('.answer_5wrong')
 var finalScoreEl = document.querySelector('#final_score');
 
 function showEndScreen() {
-    questionFive.style.display = "none"
-    endScreen.style.display = "flex"
-};
+    questionFive.style.display = "none";
+    endScreen.style.display = "flex";
+    timerEl.style.display = 'none'
+
+    stopCountdown();
+
+    var finalTime = totalTime - countdown;
+    var finalScoreEl = document.querySelector('#final_score');
+    finalScoreEl.innerText = 'You completed the quiz in ' + finalTime + ' seconds';
+}
 
 // DISPLAYS WHETHER USER CHOICE OF ANSWER IS RIGHT OR WRONG
 clickAnswer5Right.forEach(function (answer5) {
@@ -211,7 +266,7 @@ function addName() {
         li.textContent = playerName + ' ' + 'scored ' + score + ' ' + 'points!';
         leaderboard.appendChild(li);
         nameInput.value = "";
-        
+
 
         li.style.display = 'flex'
         leaderboardContainer.style.display = 'flex'
@@ -248,6 +303,10 @@ function restartQuiz() {
     var restartBtn = document.querySelector('#restart_btn');
     var leaderboardContainer = document.getElementById('style_leaderboard_container');
     var startQuizContainer = document.querySelector('#quiz_style_container');
+
+    countdown = totalTime;
+    updateCountdown();
+
     restartBtn.addEventListener('click', function () {
         leaderboardContainer.style.display = 'none';
         startQuizContainer.style.display = 'flex';
@@ -256,3 +315,6 @@ function restartQuiz() {
         updateScoreDisplay();
     })
 }
+
+
+updateCountdown();

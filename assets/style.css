@@ -208,11 +208,15 @@ li {
     border-color: white;
 }
 
-.score_and_timer {
-    display: flex;
-    justify-content: space-evenly;
-}
 
-#score {
-    
+/* SCORE & TIMER DISPLAY */
+.score {
+    display: flex;
+    justify-content: center;
+}
+#timer {
+    display: none;
+    justify-content: center;
+    margin-top: 3vh;
+    font-size: 3rem;
 }
